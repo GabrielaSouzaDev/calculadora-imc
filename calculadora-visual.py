@@ -18,6 +18,14 @@ app.iconbitmap('assets/ico/calc.ico')
 app.resizable(False, False)
 
 # Lógica
+def calcular():
+    nome_usuario = nome.get()
+    altura_usuario = float(altura.get())
+    peso_usuario = float(peso.get())
+
+    imc = peso_usuario / (altura_usuario ** 2)
+
+    resultado.configure(text=f'Olá, {nome_usuario}\n seu IMC é: {imc:.2f}')
 
 # Configurações dos elementos da tela
 titulo1 = ctk.CTkLabel(app,
@@ -55,7 +63,7 @@ peso.pack(pady=20)
 
 botao = ctk.CTkButton(app,
                       text='Calcular',
-                    #   command=calcular,
+                      command=calcular,
                       corner_radius=10,
                       fg_color='#A431D1',
                       hover_color='#7A1E9C',
@@ -63,5 +71,11 @@ botao = ctk.CTkButton(app,
                       width=250,
                       height=50)
 botao.pack(pady=20)
+
+resultado = ctk.CTkLabel(app,
+                          text='',
+                          font=('Arial', 30, 'bold'),
+                          text_color="#FFFFFF")
+resultado.pack(pady=20)
 
 app.mainloop()
