@@ -25,7 +25,20 @@ def calcular():
 
     imc = peso_usuario / (altura_usuario ** 2)
 
-    resultado.configure(text=f'Olá, {nome_usuario}\n seu IMC é: {imc:.2f}')
+    if imc <= 18.5:
+        classificacao = 'Classificação: Abaixo do peso'
+        cor = '#5B9BD5'
+    elif imc <= 25:
+        classificacao = 'Classificação: Peso normal'
+        cor = '#70AD47'
+    elif imc <= 30:
+        classificacao = 'Classificação: Sobrepeso'
+        cor = '#FFC000'
+    else:
+        classificacao = 'Classificação: Obesidade'
+        cor = '#FF4444'
+
+    resultado.configure(text=f'Olá, {nome_usuario}\n seu IMC é: {imc:.2f}\n {classificacao}', text_color=cor)
 
 # Configurações dos elementos da tela
 titulo1 = ctk.CTkLabel(app,
